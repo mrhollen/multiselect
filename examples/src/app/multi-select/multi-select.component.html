@@ -1,0 +1,19 @@
+<div>
+  <div (click)="activate()">
+    <input name="search" type="text" [(ngModel)]="searchText" (blur)="deactivate()" />
+    <div *ngFor="let selected of selectedOptions">
+      {{selected.display}} 
+      <div>X</div>
+    </div>
+  </div>
+  <ul *ngIf="active">
+    <li 
+      class="option"
+      [ngClass]="{active: option.active}"
+      *ngFor="let option of visibleOptions" 
+      (mouseover)="activateOption(option)" 
+      (mouseout)="deactivateOption(option)">
+      {{option.displayText}}
+    </li>
+  </ul>
+</div>
